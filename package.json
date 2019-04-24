@@ -1,0 +1,21 @@
+{
+  "name": "json-debby",
+  "version": "1.2.7",
+  "description": "JSON Database (commented in French)",
+  "main": "Debby.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "db",
+    "database",
+    "json",
+    "easy"
+  ],
+  "author": "ghom",
+  "license": "ISC",
+  "dependencies": {
+    "console-gridlist": "^1.0.6"
+  },
+  "devDependencies": {}
+}
