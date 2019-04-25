@@ -1,6 +1,6 @@
 {
   "name": "json-debby",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "JSON Database (commented in French)",
   "main": "Debby.js",
   "scripts": {
@@ -14,8 +14,14 @@
   ],
   "author": "ghom",
   "license": "ISC",
-  "dependencies": {
-    "console-gridlist": "^1.0.6"
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CamilleAbella/Debby.git"
   },
-  "devDependencies": {}
+  "bugs": {
+    "url": "https://github.com/CamilleAbella/Debby/issues"
+  },
+  "homepage": "https://github.com/CamilleAbella/Debby#readme"
 }

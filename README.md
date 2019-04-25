@@ -20,65 +20,41 @@ Add as many files as you want to your database by entering their path as a param
 
 ```js
 const Debby = require("json-debby")
-const db = new Debby(...paths)
+const debby = new Debby("./save.json") 
 ```
 
 ## Functions
 
 The **path** parameter represents a complete path.  
 The **pathName** parameter represents a piece of path.  
-The **data** parameter represents the path in the database.  
 
 - class **Debby**
-	- Prototype
-		- addDatabase( *path* )
-		- get( *pathName, ...data* )
-		- set( *pathName, ...data* )
-		- find( *pathName* )
-		- end()
-		- log()
-	- Global
-		- *static* GET( *pathName, ...data* )
-		- *static* SET( *pathName, ...data* )
-		- *static* FIND( *pathName* )
-		- *static* END()
-		- *static* LOG()
-- class **Database** (*in Debby*)
-	- Prototype
-		- get( *...data* )
-		- set( *...data* )
-		- end()
-		- log()
+	- content *alias : data, source, object & json*
+	- end()
+	- *static* global_end()
+	- *static* has( *pathName* )
+	- *static* find( *pathName* )
 
 
 ## Examples
 
 ```js
-const save = new Debby(
-	"./players.json",
-	"./scores.json"
-)
-const settings = new Debby(
-	"./config.json",
-	"./guildConfigs.json"
-)
+const debby = new Debby("./save.json")
 
 function example(){
-	save.set("players","<ID>","name","Ghom")
-	save.set("players","<ID>","level",30)
-	save.set("games",{
-		"The Binding Of Isaac":{
-			globalHighscore : 1100,
-			globalItems : 65
+	
+	cosnole.log(debby.json) //=> {}
+
+	debby.json.fleurs = {}
+	debby.json.fleurs.rose = "🌹"
+
+	console.log(debby.json) /*=> {
+		"fleurs" : {
+			"rose" : "🌹"
 		}
-	})
-	settings.set("config","prefix",".")
-	settings.set("guildConfigs",[])
-	settings.get("guildConfigs").push({
-		name : "testing",
-		value : false
-	})
-	Debby.END()
+	}*/
+
+	debby.end()
 }
 
 example()
