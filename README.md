@@ -4,9 +4,11 @@ Easy-to-use JSON-based database for beginners
 
 ## Install
 
-This package has three files.
+### included files
 
 - Debby.js
+- test.js
+- test.json
 - README.md
 - package.json
 
@@ -20,20 +22,23 @@ Add as many files as you want to your database by entering their path as a param
 
 ```js
 const Debby = require("json-debby")
-const debby = new Debby("./save.json") 
+const debby = new Debby(
+	"./save.json", // mandatory path
+	"utf8" // optional encoding (default : utf8)
+) 
 ```
 
-## Functions
+## Properties
 
 The **path** parameter represents a complete path.  
 The **pathName** parameter represents a piece of path.  
 
 - class **Debby**
 	- content *alias : data, source, object & json*
-	- end()
+	- *async* end()
 	- *static* global_end()
-	- *static* has( *pathName* )
-	- *static* find( *pathName* )
+	- *static* has( **pathName** )
+	- *static* find( **pathName** )
 
 
 ## Examples
@@ -42,8 +47,6 @@ The **pathName** parameter represents a piece of path.
 const debby = new Debby("./save.json")
 
 function example(){
-	
-	cosnole.log(debby.json) //=> {}
 
 	debby.json.fleurs = {}
 	debby.json.fleurs.rose = "🌹"
@@ -54,7 +57,7 @@ function example(){
 		}
 	}*/
 
-	debby.end()
+	debby.end() // save the changes if there were any.
 }
 
 example()
