@@ -5,7 +5,7 @@ const writeFile = promisify(fs.writeFile)
 
 class Debby{
 
-		/* La classe Database représente un emplacement.
+		/* La classe Debby représente un emplacement.
 		 * Elle automatise le système de sauvegarde.
 		 */
 
@@ -15,18 +15,24 @@ class Debby{
 				new Error(`[Debby] the path must be a string !`)
 			)
 		}
-		if(path.startsWith("./")){
-			path = path.replace("./",__dirname+"/")
-		}
-		if(!path || !fs.existsSync(path)){
+		if(!path){
 			throw(
-				new Error(`[Debby] incorrect path : ${path||"none"}`)
+				new Error(`[Debby] incorrect path : void`)
 			)
 		}
 		if(Debby.has(path)){
 			throw(
-				new Error(`[Debby] already existing path : ${path}`)
+				new Error(`[Debby] already used path : ${path}`)
 			)
+		}
+		if(!fs.existsSync(path)){
+			try{
+				fs.writeFileSync(path,"{}")
+			}catch(err){
+				throw(
+					new Error(`[Debby] incorrect path : ${path}`)
+				)
+			}
 		}
 		this.path = path
 		this.encoding = encoding || "utf8"
@@ -151,9 +157,7 @@ class Debby{
 
 	static find(pathName){
 		return Debby.list.find(debby=>{
-			return debby.path === pathName || debby.path
-				.replace(__dirname,"")
-				.includes(pathName)
+			return debby.path === pathName || debby.path.includes(pathName)
 		})
 	}
 }
